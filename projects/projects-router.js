@@ -23,6 +23,7 @@ router.get('/', (req, res) => {
     res.status(201).json(newProjects);
     })
     .catch (err => {
+        console.log(err);
     res.status(500).json({ message: 'Failed to create new project' });
     });
 });
