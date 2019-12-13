@@ -1,11 +1,19 @@
 const express = require('express');
+// const helmet = require('helmet');
 
-const projectsRouter = require('');
+const projectsRouter = require('./projects/projects-router');
+// const tasksRouter = require('./tasks/tasks-router');
+// const resourcesRouter = require('./resources/resources-router');
 
 const server = express();
 
 server.use(express.json());
+// server.use(helmet());
+
+
 server.use('/api/projects', projectsRouter);
+// server.use('/api/tasks', tasksRouter);
+// server.use('/api/resources', resourcesRouter);
 
 
-module.exports = server;
+module.exports = server
