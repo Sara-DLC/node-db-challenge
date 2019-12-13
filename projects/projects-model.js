@@ -6,9 +6,13 @@ module.exports = {
     removeProjects
 }
 
-function getProjects () {
-    return db('projects');
-};
+function getProjects() {
+return db("projects").then(projects =>
+    projects.map(project => {
+    return { ...project, completed: !!project.completed };
+    })
+);
+}
 
 
 function addProjects(newProject) {

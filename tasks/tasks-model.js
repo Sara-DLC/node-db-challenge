@@ -6,9 +6,13 @@ module.exports = {
     removeTasks
 }
 
-function getTasks () {
-    return db('tasks');
-};
+function getTasks() {
+    return db("tasks").then(tasks =>
+        tasks.map(task => {
+        return { ...task, completed: !!task.completed };
+        })
+    );
+    }
 
 
 function addTasks(newTask) {
