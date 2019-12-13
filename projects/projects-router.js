@@ -28,4 +28,20 @@ router.get('/', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+const { id } = req.params;
+
+    db.removeProjects(id)
+    .then(deleted => {
+    if (deleted) {
+    res.json({ removed: deleted });
+    } else {
+    res.status(404).json({ message: 'Could not find project with given id' });
+    }
+    })
+    .catch(err => {
+    res.status(500).json({ message: 'Failed to delete project' });
+    });
+});
+
 module.exports = router;
